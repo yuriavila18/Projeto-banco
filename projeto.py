@@ -211,7 +211,7 @@ def exibir_extrato(diretorio_usuario, username):
     # Abrir e ler o arquivo info.txt
         with open(caminho_info, "r") as arquivo:
             conteudo = arquivo.read()
-            print(conteudo)  # Exibe o conteúdo do arquivo
+            print(conteudo) 
     else:
         print(f"O arquivo {caminho_info} não foi encontrado.")
 
@@ -271,12 +271,13 @@ def main():
 
                 escolha = input('Escolha a opção:')
 
-                if escolha == '1':  # Depósito
+                # Depósito
+                if escolha == '1':  
                     valor = float(input('Valor do depósito:'))
                     saldo += valor 
                     operacoes(username, saldo, valor, extrato, info_usuario, "Depósito")
-
-                elif escolha == '2':  # Saque
+                # Saque
+                elif escolha == '2':  
                     valor = float(input("Valor do saque:"))
                     if saldo >= valor:
                         saldo -= valor 
@@ -284,36 +285,40 @@ def main():
                         print(f"Saque de R${valor:.2f} realizado com sucesso!")
                     else:
                         print('Saldo insuficiente.')
-
-                elif escolha == '3':  # Saldo
+                # Saldo
+                elif escolha == '3':  
                     print(f'Saldo atual: R$ {saldo:.2f}')
-
-                elif escolha == '4':  # Extrato
+                # Extrato
+                elif escolha == '4':  
                     exibir_extrato("dados_usuarios", username)
 
-
-                elif escolha == '5': # Dados
+                # Dados
+                elif escolha == '5': 
                     exibir_dados_usuario(username, nome, cpf, telefone)
                     opcao_dados = input("Escolha a opção:\n1. Alterar Dados\n2. Alterar senha\n3. Voltar\n4. Excluir usuário\nEscolha a opção:")
                     
-                    if opcao_dados == '1': # Alterar dados do usuário
+                    # Alterar dados do usuário
+                    if opcao_dados == '1': 
                         alterar_dados_usuario(username, info_usuario)
-
-                    elif opcao_dados == '2': # Alterar senha do usuário
+                    
+                    # Alterar senha do usuário
+                    elif opcao_dados == '2': 
                         alterar_senha(username, info_usuario)
 
-                    elif opcao_dados == '3': # Voltar
+                    # Voltar
+                    elif opcao_dados == '3': 
                         continue
-                    
-                    elif opcao_dados == '4': # Excluir usuário
+
+                    # Excluir usuário
+                    elif opcao_dados == '4': 
                         confirmacao = input(f"Tem certeza que deseja excluir o usuário {username}? (S/N): ")
-                        if confirmacao.lower() == 's': # Exclusão
+                        if confirmacao.lower() == 's': 
                             excluir_usuario(username)
                             break
-                        elif confirmacao.lower() == 'n': # Voltar ao menu caso não exclua
+                        elif confirmacao.lower() == 'n':
                             continue
-
-                elif escolha == '6':  # Sair
+                # Sair
+                elif escolha == '6':  
                     print(f"Obrigado, {username}, por utilizar o sistema bancário. Até mais!")
                     break
 
